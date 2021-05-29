@@ -5,10 +5,11 @@ import { useEffect, useState } from 'react';
 
 
 import BookCard from "./components/Card"
-
+import InputField from "./components/InputField"
 // Material UI
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+
 
 
 function App() {
@@ -38,12 +39,26 @@ function App() {
   
   return (
     <>
-    <Typography variant="h1" align="center">
+    <Typography variant="h1" align="center"  width="75%">
       GetGround
-
     </Typography>
 
-    <div>     
+    <div className={styles.pageNav}>
+      <InputField placeholder={"Marquez"} label={"Author"}/>
+      <InputField placeholder={"2000"} label={"ID"}/>
+      <InputField placeholder={"A thousand splendid suns"} label={"Title"}/>
+    </div>
+
+    <div className={styles.pageNav}>
+      <Button variant="contained" onClick={() => {setPageNo(pageNo - 1)}}>Previous Page</Button>
+      <p>{pageNo}</p>
+      <Button variant="contained" onClick={() => {setPageNo(pageNo + 1)}}>Next Page</Button>
+    </div>
+    
+
+
+
+    <div className={styles.returnedBooks}>     
       {
       library.map((book) => { 
         return (
@@ -52,11 +67,12 @@ function App() {
       })
       }
     </div>
-    <Button variant="contained" onClick={() => {setPageNo(pageNo - 1)}}>Preious Page</Button>
-    <p>{pageNo}</p>
 
-    <Button variant="contained" onClick={() => {setPageNo(pageNo + 1)}}>Next Page</Button>
-    {/* <Pagination count={10} color="primary" /> */}
+    <div className={styles.pageNav}>
+      <Button variant="contained" onClick={() => {setPageNo(pageNo - 1)}}>Previous Page</Button>
+      <p>{pageNo}</p>
+      <Button variant="contained" onClick={() => {setPageNo(pageNo + 1)}}>Next Page</Button>
+    </div>
 
     </>
   );

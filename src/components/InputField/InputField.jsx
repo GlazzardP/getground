@@ -1,30 +1,22 @@
 import React from "react";
 import styles from "./InputField.module.scss";
 import TextField from '@material-ui/core/TextField';
+import { useDispatch } from "react-redux";
 
+const InputField = (props) => {
+  const {label, placeholder, type} = props;
+  const dispatch = useDispatch();
 
-class InputField extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-    this.handleChange = this.handleChange.bind(this);
-
+  const onChange = (e) => {
+    dispatch({
+      type: "authorChanged", payload: e.target.value
+    })
   }
 
-  handleChange(event) {
-    this.setState({value: event.target.value});
-  }
 
+  return (
+    <TextField id="outlined-basic" className={styles.TextField} label="Outlined" variant="outlined" placeholder={placeholder} label={label} type={type} onChange={onChange}/>
+  );
+};
 
-  render() {
-
-    return (
-      <>
-        <TextField id="standard-basic" label={this.props.label} type="text" placeholder={this.props.placeholder}
-          value={this.state.value}
-          onChange={this.handleChange} />
-      </>
-    );
-  }
-}
 export default InputField;

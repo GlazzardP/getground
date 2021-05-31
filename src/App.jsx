@@ -1,38 +1,31 @@
 import logo from './logo.svg';
 import styles from './App.module.scss';
 import { useEffect, useState } from 'react';
-// import Async from 'react-async';
-
-import {useSelector} from "react-redux";
+import { useSelector } from "react-redux";
+import { Typography } from '@material-ui/core';
 
 import BookCard from "./components/Card"
 import InputField from "./components/InputField"
-// Material UI
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
 
-
+import IncrementCounter from "./components/IncrementCounter"
+import DecrementCounter from "./components/DecrementCounter"
 
 function App() {
   const [library, setLibrary] =useState([])
   // const [pageNo, setPageNo] =useState(1)
-  // const [itemsPerPage, setItemsPerPage] =useState(20)
+  const [itemsPerPage, setItemsPerPage] =useState(20)
 
   const setPageNo = () => {}
-  const setItemsPerpage = () => {}
+  // const setItemsPerpage = () => {}
+  const val = useSelector((state) => state.counter.count)
+  const authorChanged = useSelector((state) => state.filter.authorName)
 
+  console.log(val);
 
-  const itemsPerPage = useSelector((state) => state.itemsPerPage)
-  const pageNo = useSelector((state) => state.pageNo)
-
-
-const incrementCounter = (num1, num2) => { 
-  return num1 + num2;
-}
-
+  const decrementCounterJsx = val === 0 ? "": <DecrementCounter value={val} /> ;
 
   const getLibrary = () => { 
-   fetch(`http://nyx.vima.ekt.gr:3000/api/books/?page=${pageNo}&itemsPerPage=${itemsPerPage}&filters=[]`, { 
+   fetch(`http://nyx.vima.ekt.gr:3000/api/books/?page=${val}&itemsPerPage=${itemsPerPage}&filters=[]`, { 
       method: "POST"
     })
     .then(res => res.json())
@@ -46,27 +39,27 @@ const incrementCounter = (num1, num2) => {
     getLibrary()
   }, [])
 
+
+  console.log(authorChanged);
+
   return (
     <>
-    <h1>
-      GetGround
-    </h1>
+    <Typography variant="h1">Get Ground</Typography>
 
-    <div className={styles.pageNav}>
-      <InputField placeholder={"Marquez"} label={"Author"}/>
-      <InputField placeholder={"2000"} label={"ID"}/>
-      <InputField placeholder={"A thousand splendid suns"} label={"Title"}/>
+
+    <div className={styles.searchBar}>
+      <InputField placeholder={"Marquez"} label={"Author"} type={"text"}/>
+      <InputField placeholder={"2000"} label={"ID"} type={"number"} />
+      <InputField placeholder={"A thousand splendid suns"} label={"Title"} type={"text"} stateType={"pageNo"}/>
     </div>
 
+
     <div className={styles.pageNav}>
-      <Button variant="contained" onClick={() => {setPageNo(pageNo - 1)}}>Previous Page</Button>
-      <p>{pageNo}</p>
-      <Button variant="contained" onClick={() => {setPageNo(pageNo + 1)}}>Next Page</Button>
-    </div>
+      {decrementCounterJsx}
+      <p>{val}</p>
+      <IncrementCounter value={val} />
+    </div>  
     
-
-
-
     <div className={styles.returnedBooks}>     
       {
       library.map((book) => { 
@@ -78,10 +71,10 @@ const incrementCounter = (num1, num2) => {
     </div>
 
     <div className={styles.pageNav}>
-      <Button variant="contained" onClick={() => {setPageNo(pageNo - 1)}}>Previous Page</Button>
-      <p>{pageNo}</p>
-      <Button variant="contained" onClick={() => {setPageNo(pageNo + 1)}}>Next Page</Button>
-    </div>
+    {decrementCounterJsx}
+      <p>{val}</p>
+      <IncrementCounter value={val} />
+    </div>  
 
     </>
   );

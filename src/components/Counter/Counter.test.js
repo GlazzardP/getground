@@ -1,9 +1,9 @@
 import React from "react";
 import { render, screen } from '../../testing-utils';
-import Card from "./Card";
+import Counter from "./Counter";
 
-describe("Card tests", () => {
+describe("Counter tests", () => {
   it("should render", () => {
-    expect(render(<Card />)).toBeTruthy();
+    expect(render(<Counter />)).toBeTruthy();
   });
 });

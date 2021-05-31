@@ -1,9 +1,18 @@
-h1 { 
-    width: 80%;
-    margin: 10px auto;
-    // border: solid black 2px;
+// nav { 
+  // width: 80%;
+  // margin: auto;
+  h1 { 
+    width: 200;
+    // margin: auto;
+    text-align: center;
   }
+// }
 
+.searchBar { 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .pageNav { 
   display: flex;
   

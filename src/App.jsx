@@ -17,6 +17,9 @@ function App() {
   const [pageNo, setPageNo] =useState(1)
   const [itemsPerPage, setItemsPerPage] =useState(20)
 
+const incrementCounter = (num1, num2) => { 
+  return num1 + num2;
+}
 
 
   const getLibrary = () => { 
@@ -34,14 +37,12 @@ function App() {
     getLibrary()
   }, [])
 
-  // console.log(library);
-
-  
+  // console.log(incrementCounter(2,2))
   return (
     <>
-    <Typography variant="h1" align="center"  width="75%">
+    <h1>
       GetGround
-    </Typography>
+    </h1>
 
     <div className={styles.pageNav}>
       <InputField placeholder={"Marquez"} label={"Author"}/>

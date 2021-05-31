@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
+import { incrementCounter } from "./App"
 
 test('renders learn react link', () => {
   render(<App />);
@@ -13,3 +14,12 @@ test('renders learn react link', () => {
 //   expect(res).toBe("Medium")
 
 // })
+
+
+// const incrementCounter = require('./counter')
+
+
+test("2 + 2 to be 4", () => { 
+  expect(2, 2).toBe(4)
+
+})

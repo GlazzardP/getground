@@ -3,6 +3,7 @@ import styles from './App.module.scss';
 import { useEffect, useState } from 'react';
 // import Async from 'react-async';
 
+import {useSelector} from "react-redux";
 
 import BookCard from "./components/Card"
 import InputField from "./components/InputField"
@@ -14,8 +15,16 @@ import Typography from '@material-ui/core/Typography';
 
 function App() {
   const [library, setLibrary] =useState([])
-  const [pageNo, setPageNo] =useState(1)
-  const [itemsPerPage, setItemsPerPage] =useState(20)
+  // const [pageNo, setPageNo] =useState(1)
+  // const [itemsPerPage, setItemsPerPage] =useState(20)
+
+  const setPageNo = () => {}
+  const setItemsPerpage = () => {}
+
+
+  const itemsPerPage = useSelector((state) => state.itemsPerPage)
+  const pageNo = useSelector((state) => state.pageNo)
+
 
 const incrementCounter = (num1, num2) => { 
   return num1 + num2;
@@ -37,7 +46,6 @@ const incrementCounter = (num1, num2) => {
     getLibrary()
   }, [])
 
-  // console.log(incrementCounter(2,2))
   return (
     <>
     <h1>

@@ -17,7 +17,7 @@ function App() {
   // const dispatch = useDispatch();
 
   const setPageNo = () => {};
-
+  // const searchCriteria = useSelector((state) => state.filters.state)
   const val = useSelector((state) => state.counter.count);
   const authorChanged = useSelector((state) => state.filter.authorName);
   // const reduxLibrary = useSelector((state) => state.library.books);
@@ -59,6 +59,9 @@ function App() {
   // useEffect(() => {
   //   reduxGetLibrary()
   // }, [])
+
+
+  // console.log(searchCriteria);
 
   return (
     <>

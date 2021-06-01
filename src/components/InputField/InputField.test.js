@@ -1,11 +1,13 @@
 import React from "react";
-// import { render } from "@testing-library/react";
-import { render, screen } from "../../testing-utils";
+import { render } from "@testing-library/react";
+import { Provider } from "react-redux";
+import { store } from "../../store/store";
 
 import InputField from "./InputField";
 
 describe("InputField tests", () => {
   it("should render", () => {
-    expect(render(<InputField />)).toBeTruthy();
+    expect(render(
+    <Provider store={store}><InputField /></Provider>)).toBeTruthy();
   });
 });

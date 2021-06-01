@@ -7,7 +7,7 @@ const initialState = {
 export const filterReducer = (state = initialState, action) => {
   if (action.type === "authorChanged") {
     return { ...state, authorName: action.payload };
-  } else if (action.type === "idChnaged") {
+  } else if (action.type === "idChanged") {
     return { ...state, ID: action.payload };
   } else if (action.type === "pageDecrease") {
     return { ...state, bookTitle: action.payload };

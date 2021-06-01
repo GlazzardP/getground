@@ -7,7 +7,12 @@ import InputField from "./InputField";
 
 describe("InputField tests", () => {
   it("should render", () => {
-    expect(render(
-    <Provider store={store}><InputField /></Provider>)).toBeTruthy();
+    expect(
+      render(
+        <Provider store={store}>
+          <InputField />
+        </Provider>
+      )
+    ).toBeTruthy();
   });
 });

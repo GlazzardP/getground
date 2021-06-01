@@ -6,6 +6,12 @@ import Filters from "./Filters";
 
 describe("Filters tests", () => {
   it("should render", () => {
-    expect(render(<Provider store={store}><Filters /></Provider>)).toBeTruthy();
+    expect(
+      render(
+        <Provider store={store}>
+          <Filters />
+        </Provider>
+      )
+    ).toBeTruthy();
   });
 });

@@ -6,6 +6,12 @@ import IncrementCounter from "./IncrementCounter";
 
 describe("IncrementCounter tests", () => {
   it("should render", () => {
-    expect(render(<Provider store={store}><IncrementCounter /></Provider>)).toBeTruthy();
+    expect(
+      render(
+        <Provider store={store}>
+          <IncrementCounter />
+        </Provider>
+      )
+    ).toBeTruthy();
   });
 });

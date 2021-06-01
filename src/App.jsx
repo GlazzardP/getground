@@ -22,25 +22,27 @@ function App() {
 
   const decrementCounterJsx = val === 0 ? "" : <DecrementCounter value={val} />;
 
-
   const getLibrary = async () => {
-    const response = await fetch(`http://nyx.vima.ekt.gr:3000/api/books/?page=${val}&itemsPerPage=${itemsPerPage}&filters=[]`, {
-          method: "POST"
-      })
-    const jsonResponse = await response.json()
-      .then(jsonResponse => {
+    const response = await fetch(
+      `http://nyx.vima.ekt.gr:3000/api/books/?page=${val}&itemsPerPage=${itemsPerPage}&filters=[]`,
+      {
+        method: "POST",
+      }
+    );
+    const jsonResponse = await response
+      .json()
+      .then((jsonResponse) => {
         dispatch({
           type: "listLibrary",
-          payload: jsonResponse.books
+          payload: jsonResponse.books,
+        });
       })
-    })
-      .catch(error => console.log(error))
-  }
+      .catch((error) => console.log(error));
+  };
 
   useEffect(() => {
-    getLibrary()
-  }, [getLibrary, library])
-
+    getLibrary();
+  }, [getLibrary, library]);
 
   return (
     <>

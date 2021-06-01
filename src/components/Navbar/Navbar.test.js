@@ -6,7 +6,12 @@ import Navbar from "./Navbar";
 
 describe("Navbar tests", () => {
   it("should render", () => {
-    expect(render(
-      <Provider store={store}><Navbar /></Provider>)).toBeTruthy();
+    expect(
+      render(
+        <Provider store={store}>
+          <Navbar />
+        </Provider>
+      )
+    ).toBeTruthy();
   });
 });

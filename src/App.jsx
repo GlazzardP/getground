@@ -1,27 +1,30 @@
 import logo from './logo.svg';
 import styles from './App.module.scss';
 import { useEffect, useState } from 'react';
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Typography } from '@material-ui/core';
 
-import BookCard from "./components/Card"
-import InputField from "./components/InputField"
+import BookCard from "./components/Card";
+import InputField from "./components/InputField";
+import Navbar from "./components/Navbar";
 
 import IncrementCounter from "./components/IncrementCounter"
 import DecrementCounter from "./components/DecrementCounter"
 
+import Filters from "./containers/Filters";
+import { red } from '@material-ui/core/colors';
+
 function App() {
   const [library, setLibrary] =useState([])
-  // const [pageNo, setPageNo] =useState(1)
   const [itemsPerPage, setItemsPerPage] =useState(20)
 
+  const dispatch = useDispatch();
+
   const setPageNo = () => {}
-  // const setItemsPerpage = () => {}
+
   const val = useSelector((state) => state.counter.count)
   const authorChanged = useSelector((state) => state.filter.authorName)
-
-  console.log(val);
-
+  const reduxLibrary = useSelector((state) => state.library.books)
   const decrementCounterJsx = val === 0 ? "": <DecrementCounter value={val} /> ;
 
   const getLibrary = () => { 
@@ -34,25 +37,36 @@ function App() {
     })
     .catch(error => console.log(error))
   }
+  
+
+  const reduxGetLibrary = async () => { 
+    const response = await fetch(`http://nyx.vima.ekt.gr:3000/api/books/?page=1&itemsPerPage=20&filters=[]`, { 
+          method: "POST"
+      })
+    const jsonResponse = await response.json()
+      // .then(response => response.json())
+      .then(jsonResponse => { 
+        dispatch({
+          type: "listLibrary",
+          payload: jsonResponse.books
+      })
+    })
+      .catch(error => console.log(error))
+  }
 
   useEffect(() => { 
     getLibrary()
   }, [])
 
+  useEffect(() => { 
+    reduxGetLibrary()
+  }, [])
 
-  console.log(authorChanged);
 
   return (
     <>
-    <Typography variant="h1">Get Ground</Typography>
-
-
-    <div className={styles.searchBar}>
-      <InputField placeholder={"Marquez"} label={"Author"} type={"text"}/>
-      <InputField placeholder={"2000"} label={"ID"} type={"number"} />
-      <InputField placeholder={"A thousand splendid suns"} label={"Title"} type={"text"} stateType={"pageNo"}/>
-    </div>
-
+    <Navbar />
+    <Filters />
 
     <div className={styles.pageNav}>
       {decrementCounterJsx}
@@ -62,16 +76,16 @@ function App() {
     
     <div className={styles.returnedBooks}>     
       {
-      library.map((book) => { 
-        return (
-          <BookCard key={book.id} book={book} />
-        )
-      })
+        library.map((book) => { 
+          return (
+            <BookCard key={book.id} book={book} />
+          )
+        })
       }
     </div>
 
     <div className={styles.pageNav}>
-    {decrementCounterJsx}
+      {decrementCounterJsx}
       <p>{val}</p>
       <IncrementCounter value={val} />
     </div>  

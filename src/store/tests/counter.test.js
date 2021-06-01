@@ -6,9 +6,8 @@ const defaultState = {
 
 describe("Reducer", () => {
   test("should return default state when state is not undefined", () => {
-    expect(
-      counterReducer(undefined, {
-        type: "ACTION_TYPE",
+    expect(counterReducer(undefined, {
+        type: "INCREMENT",
       })
     ).toEqual(defaultState);
   });

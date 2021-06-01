@@ -1,5 +1,5 @@
 const initState = {
-  books: {},
+  books: [],
 };
 
 export const libraryReducer = (state = initState, action) => {

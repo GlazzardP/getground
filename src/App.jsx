@@ -65,16 +65,6 @@ function App() {
   //   reduxGetLibrary()
   // }, [])
 
-  // const useStyles = makeStyles((theme) => ({
-  //   root: {
-  //     '& > *': {
-  //       marginTop: theme.spacing(2),
-  //     },
-  //   },
-  // }));
-
-  // const classes = useStyles();
-
 
   return (
     <>
@@ -86,11 +76,6 @@ function App() {
       <p>{val}</p>
       <IncrementCounter value={val} />
     </div>  
-
-    {/* <div className={classes.root}>
-      <Pagination count={10} shape="rounded" />
-      <Pagination count={10} variant="outlined" shape="rounded" />
-    </div> */}
     
     <div className={styles.returnedBooks}>     
       {

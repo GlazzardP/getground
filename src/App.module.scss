@@ -1,17 +1,16 @@
-// nav { 
-  // width: 80%;
+// nav {
+// width: 80%;
+// margin: auto;
+h1 {
+  width: 200;
   // margin: auto;
-  h1 { 
-    width: 200;
-    // margin: auto;
-    text-align: center;
-  }
+  text-align: center;
+}
 // }
 
-
-.pageNav { 
+.pageNav {
   display: flex;
-  
+
   justify-content: center;
   align-items: center;
   margin: 20px;
@@ -21,26 +20,25 @@
   }
 }
 
-.returnedBooks { 
+.returnedBooks {
   display: grid;
   grid-template-columns: auto;
   margin: auto;
 }
 
-
 // @media only screen and (min-width: 768px) {
-//   .returnedBooks { 
+//   .returnedBooks {
 //     display: grid;
 //     grid-template-columns: auto auto;
 //   }
 // }
 
 @media only screen and (min-width: 1024px) {
-  // .returnedBooks { 
+  // .returnedBooks {
   //   display: grid;
   //   grid-template-columns: auto auto auto auto;
   // }
-  .heading { 
+  .heading {
     width: 40%;
   }
 }

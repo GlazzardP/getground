@@ -1,8 +1,7 @@
 import React from "react";
 import styles from "./DecrementCounter.module.scss";
 import { useDispatch } from "react-redux";
-import Button from '@material-ui/core/Button';
-
+import Button from "@material-ui/core/Button";
 
 const DecrementCounter = (props) => {
   const { val } = props;
@@ -10,14 +9,19 @@ const DecrementCounter = (props) => {
 
   const onClick = () => {
     dispatch({
-      type: "DECREMENT"
-    })
-  }
+      type: "DECREMENT",
+    });
+  };
 
   return (
-
-   <Button id="decrement-button" className="button" onClick={onClick} value={val}>Previous Page</Button>
-
+    <Button
+      id="decrement-button"
+      className="button"
+      onClick={onClick}
+      value={val}
+    >
+      Previous Page
+    </Button>
   );
 };
 

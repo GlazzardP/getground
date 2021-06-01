@@ -1,8 +1,7 @@
 import React from "react";
 import styles from "./IncrementCounter.module.scss";
 import { useDispatch } from "react-redux";
-import Button from '@material-ui/core/Button';
-
+import Button from "@material-ui/core/Button";
 
 const IncrementCounter = (props) => {
   const { val } = props;
@@ -10,12 +9,21 @@ const IncrementCounter = (props) => {
 
   const onClick = () => {
     dispatch({
-      type: "INCREMENT"
-    })
-  }
+      type: "INCREMENT",
+    });
+  };
 
   return (
-      <Button variant="container" color="primary" id="increment-button" className="button" onClick={onClick} value={val}>Next Page</Button>
+    <Button
+      variant="container"
+      color="primary"
+      id="increment-button"
+      className="button"
+      onClick={onClick}
+      value={val}
+    >
+      Next Page
+    </Button>
   );
 };
 

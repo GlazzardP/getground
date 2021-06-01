@@ -6,6 +6,12 @@ import Card from "./Card";
 
 describe("Card tests", () => {
   it("should render", () => {
-    expect(render(<Provider store={store}><Card /></Provider>)).toBeTruthy();
+    expect(
+      render(
+        <Provider store={store}>
+          <Card />
+        </Provider>
+      )
+    ).toBeTruthy();
   });
 });

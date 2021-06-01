@@ -1,18 +1,15 @@
-// import CounterReducer from "../../reducers/CounterReducer";
-import CounterReducer from "../counter";
+import counterReducer from "../counter.js";
 
-// const defaultState = { counterValue:5, values:[] }
-// describe(“Reducer”,()=>{
-//    test(“should return default state when state is not undefined”,()=>{
-//       expect(CounterReducer(undefined       {type:”ACTION_TYPE”})).toEqual(defaultState);
-// })
+const defaultState = {
+  count: 0,
+};
 
-const initState = {
-   count: 0,
-}
-
-describe("Reducer",() => {
-   test("should return default state when state is not undefined",() => {
-      expect(CounterReducer(undefined,        
-        {type: "ACTION_TYPE",})).toEqual(defaultState);
-})
+describe("Reducer", () => {
+  test("should return default state when state is not undefined", () => {
+    expect(
+      counterReducer(undefined, {
+        type: "ACTION_TYPE",
+      })
+    ).toEqual(defaultState);
+  });
+});
